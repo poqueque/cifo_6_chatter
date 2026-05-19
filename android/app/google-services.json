@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140655907043",
+    "project_id": "chatter6-cifo",
+    "storage_bucket": "chatter6-cifo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140655907043:android:dab5cf4fe63155da1b75d6",
+        "android_client_info": {
+          "package_name": "net.poquesoft.chatter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFhTNn70165MyZ_1U48TDd7S-4vPwaVRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
