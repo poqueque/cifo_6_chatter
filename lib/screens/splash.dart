@@ -1,8 +1,10 @@
 import 'package:chatter/screens/home.dart';
+import 'package:chatter/services/data_provider.dart';
 import 'package:chatter/styles/app_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -67,6 +69,8 @@ class _SplashState extends State<Splash> {
   }
 
   void navigateHome(BuildContext context) {
+    var dataProvider = context.read<DataProvider>();
+    dataProvider.init();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Home()),
