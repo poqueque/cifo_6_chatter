@@ -8,6 +8,7 @@ class AppStyles {
   static Color balticblue = Color(0xff255c99);
   static Color vividTangerine = Color(0xffff7f11);
   static Color sageGreen = Color(0xff6da34d);
+  static Color lightBlue = Color(0xffbdd5ef);
 
   static TextStyle statusStyle = TextStyle(
     color: balticblue,

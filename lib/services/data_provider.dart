@@ -23,6 +23,7 @@ class DataProvider extends ChangeNotifier {
   Future<void> addMessage(String content) async {
     var message = Message(
       uid: FirebaseAuth.instance.currentUser?.uid ?? "Anonymous",
+      userName: FirebaseAuth.instance.currentUser?.displayName ?? "Anonymous",
       content: content,
       dateTime: DateTime.now(),
     );
