@@ -1,7 +1,9 @@
+import 'package:chatter/main.dart';
 import 'package:chatter/screens/home.dart';
 import 'package:chatter/services/data_provider.dart';
 import 'package:chatter/styles/app_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +44,29 @@ class _SplashState extends State<Splash> {
   Future<void> init() async {
     status = "Conectant a Firebase";
     setState(() {});
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    debugPrint("Token: $fcmToken");
+
+    final notificationSettings = await FirebaseMessaging.instance
+        .requestPermission();
+    if (notificationSettings.authorizationStatus ==
+        AuthorizationStatus.authorized) {
+      debugPrint("S'han donat permisos");
+    } else {
+      debugPrint("No s'han donat permisos");
+    }
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      debugPrint("S'ha rebut un missatge en primer pla");
+      debugPrint("${message.data}");
+    });
+
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+    FirebaseMessaging.instance.subscribeToTopic("sala1");
+
+    if (!mounted) return;
+
     User? user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       debugPrint("Not logged");
